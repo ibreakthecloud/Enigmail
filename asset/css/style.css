@@ -1,0 +1,258 @@
+body
+{
+	scroll-behavior: smooth;
+	background-image: url('../../images/bg.png');
+	overflow-y: scroll;
+}
+
+
+.navbar-brand
+{
+	padding-left: 50px;
+	transition: 0.5s;
+	font-size: 30px;
+}
+.collapsedbar
+{
+	height: 100%;
+	width: 50px; /*Change by JS*/
+	position: fixed;
+	z-index: 1;
+	top:0;
+	left: 0;
+	background-color:#111111;
+	overflow-x: hidden;
+	padding-top: 60px;
+	transition: 0.5s;
+}	
+
+.collapsedbar .openbtn
+{
+	position: absolute;
+	top: 0px;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px; 
+}
+.collapsedbar a
+{
+	padding: 8px 8px 8px 8px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+
+}
+.collapsedbar a:hover, .offcanvas a:focus
+{
+	color: #f1f1f1;
+}
+
+/*Side nav navigation menu*/
+
+.sidenav
+{
+	height: 100%;
+	width: 0px; /*Change by JS*/
+	position: fixed;
+	z-index: 2;
+	top:0;
+	left: 0;
+	background-color:#111111;
+	overflow-x: hidden;
+	padding-top: 60px;
+	transition: 0.5s;
+
+}
+.sidenav a
+{
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+
+}
+.sidenav a:hover, .offcanvas a:focus
+{
+	color: #f1f1f1;
+}
+.sidenav .closebtn
+{
+	position: absolute;
+	top: 0px;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px; 
+}
+
+#main
+{
+	transition: margin-left .5s;
+	/*transition: margin-right .5s;*/
+	padding: 20px;
+	margin-left: 50px;
+	/*margin-right: 50px;*/
+}
+
+@media screen and (max-height: 450px)
+{
+	.sidenav {padding-top: 15px;}
+	.sidenav a{font-size: 18px;}
+}
+
+.user-menu
+{
+	float: right;
+	display: inline-block;
+	position: absolute;
+	z-index: 1;
+	right: 0;
+	top: 0;
+}
+.pull-right
+{
+	text-align: right;
+	text-decoration-color: red;
+}
+
+/*Footer*/
+.footer
+{
+	bottom: 0;
+	right: 0;
+	left: 0;
+	height: 5%;
+	width: 100%;
+	position: fixed;
+	background-color: black;
+	text-align: center;
+	background-color:rgba(36, 82, 69, 0.62);
+	overflow-y: hidden;
+	/*padding-: 60px;*/
+	transition: 0.5s;
+}
+.base-line
+{
+	padding-top: 7px; 
+	text-align: center;
+	color: #101010;
+}
+
+/*Compose mail*/
+.compose-mail
+{
+	display:none;
+	z-index: 3;
+	position: fixed;
+	height: 100%
+	width:100%;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	background-color: rgb(0,0,0);
+	background-color: rgba(0,0,0,0.4);
+	/*align-content: center;*/
+	padding: 50px 50px 50px 50px;
+	opacity: 0;
+	-webkit-transition: opacity 0.5s ease;
+	transition: opacity 0.5s ease;
+
+}
+.compose-mail-content
+{
+	padding: 25px 25px 25px 25px;
+	margin-right: 50px;
+	align-content: center;
+	position: fixed;
+	/*top: 0;
+	right:0;
+	left:0;*/
+	/*bottom:0;*/
+	/*right: 7%
+	top: 10%;*/
+	background-image: url(../../images/bg.png);
+	/*background-color: #fefefe;*/
+	width:85%;
+	height: 85%;
+	overflow-y: scroll;
+}
+.close-composebtn
+{
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	font-size: 50px;
+}
+.closemail
+{
+
+	position: fixed;
+	top: 28px;
+	right: 140px;
+	font-size: 25px;
+
+}
+.close-composebtn a:hover, .offcanvas a:focus
+{
+	color: #f1f1f1;
+}
+
+
+[hidden]
+{
+	display: none !important;
+}
+
+/*CSS loader*/
+.loader
+{
+	position: fixed;
+	z-index: 10;
+	opacity: 1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	margin: 0;
+	-webkit-animation:load-out 1s;
+	animation: load-out 1s;
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+@keyframes load-out
+{
+	from
+	{
+		top: 0;
+		opacity: 1;
+		width: 100%
+		/*height: 0%;*/
+
+	}
+	to
+	{
+		top: 100%;
+		opacity: 0;
+		width: 0%
+		/*height: 100%;*/
+	}
+}
+@-webkit-keyframes load-out
+{
+	from
+	{
+		top: 0;
+		opacity: 1;
+
+	}
+	to
+	{
+		top: 100%;
+		opacity: 0;
+	}
+}
