@@ -97,6 +97,21 @@ body
 	/*margin-right: 50px;*/
 }
 
+::-webkit-selection
+{
+	color: red;
+	background: yellow;
+
+}
+
+
+::selection
+{
+	color: red;
+	background: yellow;
+
+}
+
 @media screen and (max-height: 450px)
 {
 	.sidenav {padding-top: 15px;}
@@ -255,4 +270,26 @@ body
 		top: 100%;
 		opacity: 0;
 	}
+}
+
+/*Inbox*/
+.inbox-tools
+{
+	height: 100%;
+	width:100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: #101010;
+}
+.inbox-main
+{
+	-webkit-linear-gradient(top, #e8e8e8 0%, rgba(11, 251, 207, 0.43) 100%)
+	linear-gradient(top, #e8e8e8 0%, rgba(11, 251, 207, 0.43) 100%)
+}
+
+.inbox-tools-element
+{
+	text-shadow: rgba(10,11,11,0.5);
+	color: white;
 }
