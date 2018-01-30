@@ -1,128 +1,70 @@
-<!-- Author: Harshvardhan Karn -->
+
+
 <!DOCTYPE html>
-<html ng-app="spa">
+<?php
+  session_start();
+  $username = "user";
+  $password = "123";
+
+  if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
+  {
+    header("Location: mail.php");
+  }
+
+  if (isset($_POST['username']) && isset($_POST['password']))
+  {
+    if($_POST['username'] == $username && $_POST['password'] == $password)
+    {
+      $_SESSION['loggedin'] = true;
+      header("Location: mail.php");
+    }
+  }
+
+?>
+
+
+<html lang="en" >
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Enig-mail</title>
-<!-- AngularJS -->
-<script type="text/javascript" src="asset/js/angular.js"></script>
-<!-- JQuery -->
-<script type="text/javascript" src="asset/js/jquery.min.js"></script>
-<!-- Bootstrap JS -->
-<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-<!-- navbar js -->
-<script type="text/javascript" src="asset/js/navbar.js"></script>
-<!-- compose mail js -->
-<script type="text/javascript" src="asset/js/mail.js"></script>
-<!-- ANgular App -->
-<script type="text/javascript" src="asset/js/app.js"></script>
+  <meta charset="UTF-8">
+  <title>Login::EnigMail</title>
+  <meta name="viewport" content="width=600">
+  
+       <link rel="stylesheet" href="css/style2.css">
+       <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/style.css">
 
-
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-<!-- Bootstrap-theme CSS -->
-<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-theme.css">
-<!-- Style CSS -->
-<link rel="stylesheet" type="text/css" href="asset/css/style.css">
-
-
+ 
 </head>
-<body onload="loaded()">
+
+<body style="background-image:url('images/bg2.jpg');">
+  <div class="container-fluid">
+ <div class="login-page">
+<center>
+ <img src="images/logo_login.png">
+</center>
+ <br>
+<!-- Login Page Begins-->
+ 
+<p aria-label="CodePen" style="text-align: center; font-size: 30px;">
+  <span data-text="W">W</span><span data-text="E">E</span><span data-text="L">L</span><span data-text="C">C</span><span data-text="O">O</span><span data-text="M">M</span><span data-text="E">E</span><br>
+  <span data-text="T">T</span><span data-text="O">O</span><br>
+  <span data-text="E">E</span><span data-text="N">N</span><span data-text="I">I</span><span data-text="G">G</span><span data-text="M">M</span><span data-text="A">A</span><span data-text=" "> </span>
+  <span data-text="M">M</span><span data-text="A">A</span><span data-text="I">I</span><span data-text="L">L</span>
+</p>
+<div class="form">
+    <form action="#" method="post" class="login-form">
+      <input type="text" name="username" required=" " placeholder="username"  />
+      <input type="password" name="password" required=" " placeholder="password"/>
+      <input type="submit" value="submit">
+      <!-- <p class="message">Not registered? <a href="#">Create an account</a></p> -->
+    </form>
 
 
-<!-- The TopBar -->
-<nav class="navbar navbar-inverse">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a id="mynavbar-header" class="navbar-brand" style="padding-left: 50px;">Enigma</a>
-			<div class="user-menu">
-			 <a href="">User</a>
-				<ul class="dropdown pull-right">
-					<li><a href="#">Logout</a></li>
-				</ul>				
-			</div>
-		</div>
-	</div>
-	
-</nav>
-<!-- Compose mail -->
-
-<div id="mycompose" class="compose-mail">
-<a href="#" class="closemail" onclick="closecompose()"><i class="glyphicon glyphicon-chevron-down"></i></a>
-	<div class="compose-mail-content container-fluid"> 
-	<?php include('compose.php'); ?>
-	</div>
+  </div>
 </div>
-<!-- end Compose mail -->
-
-<!-- The NavBar -->
-<div id = "mycollapsedbar" class="collapsedbar" onclick="opennav()" onmouseover="opennav()">
-	<!-- <a href="javascript:void(0)" class="openbtn"><span class="glyphicon glyphicon-triangle-right"></span></a> -->
-	<a href="javascript:void(0)"><span class="glyphicon stroked glyphicon-edit" onclick="composemail()" style="color: yellow;"></span></a>
-	<a href=""><span class="glyphicon glyphicon-inbox"></span></a>
-	<a href="#"><span class="glyphicon glyphicon-folder-open"></span></a>
-	<a href="#"><span class="glyphicon glyphicon-share-alt"></span></a>		
 </div>
-<div id = "mysidenav" class="sidenav">
-	<a href="javascript:void(0)" class="closebtn" onclick="closenav()">&times;</a>
-	<a href="javascript:void(0)" onclick="composemail()"><span class="glyphicon glyphicon-edit" style="color: yellow;"> Compose</span></a>
-	<a href=""><span class="glyphicon glyphicon-inbox"> Inbox</span></a>
-	<a href="#"><span class="glyphicon glyphicon-folder-open"> Draft</span></a>
-	<a href="#"><span class="glyphicon stroked glyphicon-share-alt"> Sent</span></a>
-</div>
-<!-- <span >
-</span> -->
-<!-- The main  -->
-<div id="main" class="container-fluid" onmouseover="closenav()">
-	<h1>Enigma Mailing!</h1>
-	<div class="container-fluid well">
-		This Bootstrap container with Well class!
-		This Enigma Mailing Client, a free Open Source template, which needs improvement, I will be glad if you
-		make a branch, edit it, debug it, and give pull request, I will commit it ASAP!
-		Happy to comply! Hail Hydra! <kbd>;)</kbd>
-	</div>
-
-	<div class="container-fluid jumbotron">
-		<p>This can be used to place code inside</p>
-		<kbd>var a,b;</kbd> or <code>function inception();</code>
-	</div>
-	<div class="jumbotron container-fluid">
-		second last
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	</div>
-	<div class="jumbotron container-fluid">
-		Last
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	</div>
-
-
-</div>
-<!-- Footer -->
-<div class="footer">
-	<div class="base-line">
-	Harshvardhan Karn - codebazar.xyz ©2016
-	</div>
-</div>
-<div class="loader">
-	<img src="images/loading.gif">
-</div>
-
-
-<script type="text/javascript">
-	$(window).load(function)
-	{
-		$("loader").fadeOut("fast");
-	});
-</script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script  src="js/index.js"></script>
+  
 </body>
 </html>
